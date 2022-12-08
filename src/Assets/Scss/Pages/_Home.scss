@@ -1,0 +1,170 @@
+.generated_image_sec {
+    padding: 96px 0px 160px;
+    .heading {
+        margin-bottom: 64px;
+        h1 {
+            font-size: 32px;
+            line-height: 48px;
+            color: $concrete;
+            font-family: $bold_font;
+            margin-bottom: 8px;
+            span {
+                &.text_orange {
+                    color: $orange_roughy;
+                }
+                &.normal_font {
+                    font-size: 18px;
+                    line-height: 27px;
+                }
+            }
+        }
+        p {
+            color: $manatee;
+            font-size: 18px;
+            line-height: 27px;
+            margin-bottom: 0;
+        }
+    }
+    .inner_view {
+        max-width: 736px;
+        margin: 0 auto;
+        .generated_input {
+            margin-bottom: 17px;
+
+            .btn {
+                margin-left: 16px !important;
+                min-width: 150px;
+            }
+        }
+        .image_loader_view {
+            position: relative;
+            border: 1px solid $ebony_clay;
+            border-radius: 8px;
+            min-height: 736px;
+            background-image: linear-gradient(to bottom right, #222839, #12151e);
+            position: relative;
+            .timer,
+            .loader {
+                position: absolute;
+            }
+            .timer{
+                top: 12px;
+                right: 16px;
+                font-size: 14px;
+                color: $manatee;
+            }
+            .loader {
+                left: 0;
+                right: 0px;
+                margin: 0 auto;
+                top: 80px;
+                text-align: center;
+                color: $concrete;
+                i {
+                    font-size: 26px;
+                }
+                p {
+                    margin-top: 15px;
+                    margin-bottom: 0;
+                    font-size: 16px;
+                }
+            }
+            .img_icon_text {
+                flex-direction: column;
+                position: absolute;
+                left: 0;
+                right: 0;
+                top: 50%;
+                transform: translateY(-50%);
+                .star {
+                    position: relative;
+                    .star01,
+                    .star02 {
+                        position: absolute;
+                    }
+                    .star01 {
+                        left: 70px;
+                        bottom: 68px;
+                    }
+                    .star02 {
+                        right: 80px;
+                        bottom: 8px;
+                    }
+                }
+                p {
+                    margin-bottom: 0px;
+                    margin-top: 4px;
+                    color: $manatee;
+                }
+            }
+        }
+        .screen_s_btn {
+            margin-top: 40px;
+        }
+        .result_view {
+            margin-top: 64px;
+            p {
+                color: $concrete;
+                &:last-child {
+                    margin-bottom: 0;
+                }
+                a {
+                    color: $concrete;
+                }
+            }
+        }
+        .faqs_view {
+            margin-top: 128px;
+            h2 {
+                font-size: 32px;
+                color: $concrete;
+                font-family: $medium_font;
+                margin-bottom: 40px;
+                text-align: center;
+            }
+            .accordion {
+                .accordion-item {
+                    background-color: $theme_clr;
+                    border: none;
+
+                    &:not(:last-child) {
+                        margin-bottom: 16px;
+                    }
+                    .accordion-header {
+                        .accordion-button {
+                            padding: 16px 24px;
+                            border-radius: 8px;
+                            border: 1px solid $ebony_clay;
+                            font-size: 16px;
+                            color: $concrete;
+                            box-shadow: none;
+                            background-color: $ebonyclay;
+                            &.collapsed {
+                                background-color: $theme_clr;
+                            }
+
+                            &:after {
+                                height: 24px;
+                                width: 24px;
+                                background: url("#{$imageurl}/chevron_icon_down.svg") no-repeat center right;
+                            }
+                        }
+                    }
+                    .accordion-body {
+                        padding: 16px 0px 8px;
+                        p {
+                            color: $manatee;
+                            margin-bottom: 0;
+                            &:not(:last-child) {
+                                margin-bottom: 10px;
+                            }
+                            a {
+                                color: $manatee;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

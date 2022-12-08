@@ -1,0 +1,22 @@
+.header {
+    .navbar {
+        padding: 24px 32px;
+        border-bottom: 1px solid $ebony_clay;
+        .navbar-brand{
+            padding: 0;
+            font-size: inherit;
+        }
+        .navbar-nav {
+            .nav-item {
+                &:not(:last-child){
+                    margin-right: 24px;
+                }
+                .nav-link {
+                    padding: 0px;
+                    color: $athens_gray;
+                    font-size: 16px;
+                }
+            }
+        }
+    }
+}

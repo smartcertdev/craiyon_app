@@ -1,0 +1,189 @@
+body,
+html {
+    height: 100%;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    font-family: $regular_font;
+    background-color: $theme_clr;
+}
+
+a {
+    @include transition(linear 0.3s);
+    outline: none;
+    text-decoration: none;
+
+    &:hover,
+    &:focus {
+        text-decoration: none;
+    }
+}
+
+.container {
+    @media (min-width: 1200px) {
+        max-width: 1280px;
+    }
+}
+
+.btn {
+    padding: 12px 20px;
+    cursor: pointer;
+    border: none;
+    font-size: 16px;
+    border-radius: 8px !important;
+    line-height: normal;
+    font-weight: normal;
+    min-height: 50px;
+    font-family: $medium_font;
+
+    > img {
+        max-width: 24px;
+        margin-right: 8px;
+    }
+
+    &.btn_primary {
+        color: $concrete;
+        background-color: $orange_roughy;
+        @include box-shadow(
+            rgba(0, 0, 0, 0) 0px 0px 0px 0px,
+            rgba(0, 0, 0, 0) 0px 0px 0px 0px,
+            rgb(242, 176, 140) 0px 1px 2px 0px inset,
+            rgba(0, 0, 0, 0.24) 0px 2px 3px 0px,
+            rgba(0, 0, 0, 0.4) 0px -1px 2px 0px inset
+        );
+        &:hover,
+        &:focus,
+        &:active {
+            color: $concrete;
+            background-color: $hot_cinnamon;
+            @include box-shadow(
+                rgba(0, 0, 0, 0) 0px 0px 0px 0px,
+                rgba(0, 0, 0, 0) 0px 0px 0px 0px,
+                rgb(242, 176, 140) 0px 1px 2px 0px inset,
+                rgba(0, 0, 0, 0.24) 0px 2px 3px 0px,
+                rgba(0, 0, 0, 0.4) 0px -1px 2px 0px inset
+            );
+        }
+    }
+    &.btn_secondary {
+        color: $concrete;
+        background-color: $martinique;
+        @include box-shadow(
+            rgba(0, 0, 0, 0) 0px 0px 0px 0px,
+            rgba(0, 0, 0, 0) 0px 0px 0px 0px,
+            rgba(0, 0, 0, 0.16) 0px 2px 3px 0px,
+            rgba(242, 242, 242, 0.16) 0px 1px 2px 0px inset,
+            rgba(0, 0, 0, 0.2) 0px -1px 2px 0px inset
+        );
+        &:hover,
+        &:focus,
+        &:active {
+            color: $concrete;
+            background-color: $pickled_bluewood;
+            @include box-shadow(
+                rgba(0, 0, 0, 0) 0px 0px 0px 0px,
+                rgba(0, 0, 0, 0) 0px 0px 0px 0px,
+                rgba(0, 0, 0, 0.16) 0px 2px 3px 0px,
+                rgba(242, 242, 242, 0.16) 0px 1px 2px 0px inset,
+                rgba(0, 0, 0, 0.2) 0px -1px 2px 0px inset
+            );
+        }
+    }
+    &.disabled,
+    &:disabled {
+        opacity: 0.2;
+        cursor: not-allowed;
+    }
+    &:hover,
+    &:focus {
+        @include no-outline();
+        @include box-shadow(none);
+    }
+}
+
+.normal_font {
+    font-family: $regular_font;
+}
+
+.medium_font {
+    font-family: $medium_font;
+}
+
+.bold_font {
+    font-family: $bold_font;
+}
+
+.mix-blend-screen {
+    mix-blend-mode: screen;
+}
+
+.underline {
+    text-decoration: underline;
+    &:hover,
+    &:focus {
+        text-decoration: underline;
+    }
+}
+
+.form-control {
+    font-size: 16px;
+    color: $concrete;
+    padding: 12px;
+    height: 50px;
+    background-color: $mirage;
+    border-color: $ebony_clay;
+    border-radius: 8px !important;
+
+    &::-webkit-input-placeholder {
+        color: $gray_chateau;
+    }
+    &::-moz-placeholder {
+        color: $gray_chateau;
+    }
+    &::-moz-placeholder {
+        color: $gray_chateau;
+    }
+    &::-ms-input-placeholder {
+        color: $gray_chateau;
+    }
+
+    &:-webkit-autofill,
+    &:-webkit-autofill:hover,
+    &:-webkit-autofill:focus,
+    &:-webkit-autofill:active {
+        -webkit-box-shadow: 0 0 0 30px white inset !important;
+        box-shadow: 0 0 0 30px white inset !important;
+    }
+    &:focus {
+        outline: 2px solid $orange_roughy;
+        background-color: $mirage;
+        color: $concrete;
+        border-color: $ebony_clay;
+    }
+    &:focus,
+    &:hover {
+        // outline: none !important;
+        @include box-shadow(none !important);
+    }
+}
+
+.results {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    grid-gap: 8px;
+    .result-image {
+        width: 240px;
+        height: 240px;
+        border-radius: 8px;
+        @include transition(0.2s linear);
+        &:hover {
+            transform: translate(0, 0) rotate(0) skew(0) skewY(0) scaleX(0.97) scaleY(0.97);
+            border: 2px solid $manatee;
+        }
+        > img {
+            width: 240px;
+            height: 240px;
+            border-radius: 8px;
+        }
+    }
+}

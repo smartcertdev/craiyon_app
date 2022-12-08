@@ -1,0 +1,38 @@
+$black              : #000000;
+$white              : #ffffff;
+$theme_clr          : #12151E;
+$athens_gray        : #E5E7EB;
+$ebony_clay         : #2C3349;
+$concrete           : #F2F2F2;
+$orange_roughy      : #CC5514;
+$manatee            : #8F94A3;
+$mirage             : #1D2230;
+$gray_chateau       : #9CA3AF;
+$hot_cinnamon       : #DF5C16;
+$martinique         : #2E354C;
+$pickled_bluewood   : #303850;
+$ebonyclay          : #222839;
+
+//Grid
+$grid-breakpoints: (
+    xs: 0,
+    sm: 576px,
+    md: 768px,
+    lg: 992px,
+    xl: 1200px,
+) !default;
+
+//Paths
+$imageurl           :  "../../Images";
+$fonturl            :  "../../Fonts";
+
+//Font Family
+$regular_font       : 'Rubik-Regular';
+$medium_font        : 'Rubik-Medium';
+$bold_font          : 'Rubik-Bold';
+// $light_font      : 'GTWalsheimPro-Light';
+
+//Font Face
+@include font-face($regular_font, '#{$fonturl}/Rubik-Regular', 'normal', 'normal');
+@include font-face($medium_font, '#{$fonturl}/Rubik-Medium', 'normal', 'normal');
+@include font-face($bold_font, '#{$fonturl}/Rubik-Bold', 'normal', 'normal');
