@@ -21,13 +21,11 @@ const Home = () => {
     //Timer
     
     useEffect(() => {
-        debugger
         let interval;
         if (running) {
-            interval = setInterval((index) => {
-                debugger;
+            interval = setInterval(() => {
                 setTime(time + 10);
-                console.log("timer running");
+                console.log("timer running")
             }, 100);
         } else if (!running) {
             clearInterval(interval);
