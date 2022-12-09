@@ -5,7 +5,11 @@ import ImageIcon from "../../Assets/Images/image_icon.svg";
 import StarIconLarge from "../../Assets/Images/staricon01.svg";
 import StarIconSmall from "../../Assets/Images/staricon02.svg";
 import CameraIcon from "../../Assets/Images/camera_iocn.svg";
+import DownloadIcon from "../../Assets/Images/download_icon.svg";
+import CloseIcon from "../../Assets/Images/close_icon.svg";
 import { Configuration, OpenAIApi } from "openai";
+import classNames from 'classnames';
+import { saveAs } from 'file-saver'
 
 const Home = () => {
     //States
@@ -13,25 +17,11 @@ const Home = () => {
     const [open, setOpen] = useState('1');
     const [result, setResult] = useState("");
     const [prompt, setPrompt] = useState("");
-    const [time, setTime] = useState('');
-    // const [interval, setInterval] = useState(0);
-    
+    const [time, setTime] = useState(0);
     const [running, setRunning] = useState(false);
-
-    //Timer
-    
-    useEffect(() => {
-        let interval;
-        if (running) {
-            interval = setInterval(() => {
-                setTime(time + 10);
-                console.log("timer running")
-            }, 100);
-        } else if (!running) {
-            clearInterval(interval);
-        }
-        // return () => clearInterval(interval);
-    }, [running]);
+    const [intervalVal, setIntervalVal] = useState("");
+    const [previewImage, setPreviewImage] = useState("");
+    const [showPopup, setShowPopup] = useState(false);
 
     //Accordian Toggle
     const toggle = (id) => {
@@ -42,36 +32,53 @@ const Home = () => {
         }
     };
 
+    useEffect(() => {
+        if (running) {
+            let intv = setInterval(() => {
+                setTime(prevTime => (prevTime + 0.1));
+            }, 200);
+            setIntervalVal(intv);
+        } else if (!running) {
+            clearInterval(intervalVal);
+            setTime(0);
+        }
+    }, [running]);
+
     //OpenAI API integration
     const configuration = new Configuration({
         apiKey: process.env.REACT_APP_VITE_OPEN_AI_KEY,
     });
     const openai = new OpenAIApi(configuration);
-   
 
     //Generate Image Button Function
     const generateImage = async () => {
-        if (prompt !== "") {
-            // startTimer();
-
-            
-
-            setLoading({ loading: true });
-
+        setResult("");
+        if (prompt.length > 0) {
+            setLoading(true);
             setRunning(true);
             const res = await openai.createImage({
                 prompt: prompt,
-                n: 1,
+                n: 9,
                 size: "1024x1024",
+                // response_format:"b64_json"
             });
-            setResult(res.data.data);
             setRunning(false);
-        } else {
-            setLoading({ loading: false });
-            setResult("");
-            setPrompt("");
+            setResult(res.data.data);
+            setLoading(false);
+            setTime(0);
         }
     };
+
+    //Image Preview
+    const imagePreview = (item) => {
+        setPreviewImage(item.url);
+        setShowPopup(true);
+        console.log(previewImage);
+    }
+
+    const downloadImage = (image) => {
+        saveAs('image_url', image);
+    }
 
     return (
         <section className="generated_image_sec">
@@ -82,19 +89,39 @@ const Home = () => {
             <div className="inner_view">
                 <InputGroup className="generated_input">
                     <Input type="text" placeholder="What image do you want to generate..." value={prompt} onChange={(e) => setPrompt(e.target.value)} />
-                    <Button color="transparent" disabled={!prompt} className="btn_primary" onClick={generateImage} ><img src={DrawIcon} alt="draw" className="img-fluid" />Draw</Button>
+                    <Button color="transparent" className="btn_primary" onClick={generateImage} disabled={!prompt || loading}>
+                        <img src={DrawIcon} alt="draw" className={classNames(loading ? "img-fluid animate-wiggle" : "img-fluid")} /> {loading ? "Drawing..." : "Draw"}
+                    </Button>
                 </InputGroup>
 
-                {result.length > 0 ?
-                    <div className="results">
-                        {result.map((item, index) => {
-                            return (
-                                <div className="result-image" key={index}>
-                                    <img className="img-fluid" src={item.url} alt="result" />
-                                </div>
-                            )
-                        })}
-                    </div> : (
+                {result.length > 0 ? <>
+                    {!showPopup &&
+                        <div className="results">
+                            {result.map((item, index) => {
+                                return (
+                                    <div className="result-image" key={index} onClick={() => imagePreview(item)}>
+                                        <img className="img-fluid" src={item.url} alt="result" />
+                                    </div>
+                                )
+                            })}
+                        </div>
+                    }
+                    {showPopup &&
+                        <div className="result_preview_image">
+                            <div className="close_img">
+                                <Button type="button" color="transparent" onClick={() => downloadImage(previewImage)}>
+                                    <img src={DownloadIcon} alt="Download icon" className="img-fluid" />
+                                </Button>
+                                <Button type="button" color="transparent" onClick={() => setShowPopup(false)}>
+                                    <img src={CloseIcon} alt="Close icon" className="img-fluid" />
+                                </Button>
+                            </div>
+                            <img className="img-fluid" src={previewImage} alt="result" />
+                        </div>
+                    }
+                </>
+                    :
+                    (
                         <>
                             <div className="image_loader_view">
                                 {loading && <>
@@ -103,7 +130,7 @@ const Home = () => {
                                         <p>This should not take long (up to 2 minutes)...</p>
                                     </div>
                                     <div className="timer">
-                                       <span>{time}</span>
+                                        <div>{time.toFixed(1)}</div>
                                     </div>
                                 </>}
                                 {!loading && <div className="img_icon_text mix-blend-screen d-flex align-items-center justify-content-center">
@@ -117,7 +144,6 @@ const Home = () => {
                             </div>
                         </>
                     )}
-            
 
                 <div className="screen_s_btn text-center">
                     <Button color="transparent" className="btn_secondary">
