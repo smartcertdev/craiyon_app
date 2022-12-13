@@ -1,14 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { InputGroup, Input, Button, Accordion, AccordionBody, AccordionHeader, AccordionItem } from 'reactstrap';
-import DrawIcon from "../../Assets/Images/download.png";
+// import DrawIcon from "../../Assets/Images/download.png";
 import ImageIcon from "../../Assets/Images/image_icon.svg";
 import StarIconLarge from "../../Assets/Images/staricon01.svg";
 import StarIconSmall from "../../Assets/Images/staricon02.svg";
 import CameraIcon from "../../Assets/Images/camera_iocn.svg";
 import DownloadIcon from "../../Assets/Images/download_icon.svg";
 import CloseIcon from "../../Assets/Images/close_icon.svg";
+import LeftGlowcone from "../../Assets/Images/left_glowcone.png";
+import RightGlowcone from "../../Assets/Images/right_glowcone.png";
+import LoaderGif from "../../Assets/Images/loader.gif";
 import { Configuration, OpenAIApi } from "openai";
-import classNames from 'classnames';
+// import classNames from 'classnames';
 import { saveAs } from 'file-saver'
 
 const Home = () => {
@@ -82,15 +85,16 @@ const Home = () => {
 
     return (
         <section className="generated_image_sec">
-            <div className="heading text-center">
-                <h1>Cr<span className="text_orange">ai</span>yon <span className="normal_font">(Formerly DALL-E Mini)</span></h1>
-                <p>Free online AI image generator from text</p>
-            </div>
             <div className="inner_view">
+                <div className="heading text-center">
+                    <h1><img src={LeftGlowcone} alt="Glowcone" className="img-fluid" /><span>Use BitCone (CONE) to Generate A.I. Images online from text</span><img src={RightGlowcone} alt="Glowcone" className="img-fluid" /></h1>
+                    <p>And Directly Mint Them as NFT!</p>
+                </div>
                 <InputGroup className="generated_input">
-                    <Input type="text" placeholder="What image do you want to generate..." value={prompt} onChange={(e) => setPrompt(e.target.value)} />
+                    <Input type="text" placeholder="Enter a prompt for the image you'd like to generate :)" value={prompt} onChange={(e) => setPrompt(e.target.value)} />
                     <Button color="transparent" className="btn_primary" onClick={generateImage} disabled={!prompt || loading}>
-                        <img src={DrawIcon} alt="draw" className={classNames(loading ? "img-fluid animate-wiggle" : "img-fluid")} /> {loading ? "Drawing..." : "Draw"}
+                        {/* <img src={DrawIcon} alt="draw" className={classNames(loading ? "img-fluid animate-wiggle" : "img-fluid")} /> */}
+                        {loading ? "Created..." : "Create Images"}
                     </Button>
                 </InputGroup>
 
@@ -126,20 +130,21 @@ const Home = () => {
                             <div className="image_loader_view">
                                 {loading && <>
                                     <div className="loader">
-                                        <i className="fa fa-spinner fa-pulse"></i>
-                                        <p>This should not take long (up to 2 minutes)...</p>
+                                        {/* <i className="fa fa-spinner fa-pulse"></i>
+                                        <p>This should not take long (up to 2 minutes)...</p> */}
+                                        <img src={LoaderGif} alt="Loader" className="img-fluid" />
                                     </div>
                                     <div className="timer">
                                         <div>{time.toFixed(1)}</div>
                                     </div>
                                 </>}
                                 {!loading && <div className="img_icon_text mix-blend-screen d-flex align-items-center justify-content-center">
+                                    <p>Set your creativity free!</p>
                                     <div className="star">
                                         <img src={ImageIcon} alt="Empty state illustration" height="80" width="80" className="img-fluid" />
                                         <img src={StarIconLarge} alt="Star icon" height="24" width="24" className="star01 img-fluid" />
                                         <img src={StarIconSmall} alt="Star icon 2" height="16" width="16" className="star02 img-fluid" />
                                     </div>
-                                    <p>Generated images will appear here!</p>
                                 </div>}
                             </div>
                         </>
@@ -160,71 +165,80 @@ const Home = () => {
 
                     <Accordion open={open} toggle={toggle}>
                         <AccordionItem>
-                            <AccordionHeader tag="div" targetId="1">What is craiyon?</AccordionHeader>
-                            <AccordionBody accordionId="1"><p>Craiyon, formerly DALL·E mini, is an AI model that can draw images from any text prompt!</p></AccordionBody>
+                            <AccordionHeader tag="div" targetId="1">What is BitCone.ai?</AccordionHeader>
+                            <AccordionBody accordionId="1">
+                                <p>BitCone.ai is the first Dapp utility for BitCones (CONE)!</p>
+                                <p className="mb-0">Use BitCones to create 9 high quality A.I. generated images, then Mint them right to your wallet as an NFT!</p>
+                                <p>Just pay a small fee in (CONE) to use our A.I. model that can generate images from any text prompt!</p>
+                                <p>For each fee of 2,663,000 (CONE) tokens, 9 images will be generated by the A.I. for the prompt entered.</p>
+                                <p>If you are satisfied with any of the images presented, you can easily mint it as a NFT, directly from within the Dapp!</p>
+                                <p>(They will appear in your OpenSea profile)</p>
+                            </AccordionBody>
                         </AccordionItem>
                         <AccordionItem>
-                            <AccordionHeader tag="div" targetId="2">Are you related to DALL·E mini?</AccordionHeader>
+                            <AccordionHeader tag="div" targetId="2">How much does it cost to generate A.I. images?</AccordionHeader>
                             <AccordionBody accordionId="2">
-                                <p>Yes, <a className="underline" href="https://twitter.com/borisdayma" target="_blank" rel="noreferrer"> Boris Dayma </a> (who trained the current version of the AI model) and <a className="underline" href="https://twitter.com/pcuenq" target="_blank" rel="noreferrer"> Pedro Cuenca </a> (who worked on the backend) are both part of the craiyon team. You can find more details in the <a className="underline" href="https://huggingface.co/dalle-mini/dalle-mini" target="_blank" rel="noreferrer"> DALL·E mini model card</a>!</p>
+                                <p>In order to support hosting costs, as well as API access for the A.I. used in the backend, a small fee is charged in BitCone (CONE) in order to access the A.I. image generation tool.</p>
+                                <p>Payment in BitCones (CONE) is only required in order to generate the A.I. image variants.</p>
+                                <p>The NFT minter is then free, aside from the Gas fee for Minting the NFT image to the Blockchain.</p>
                             </AccordionBody>
                         </AccordionItem>
                         <AccordionItem>
-                            <AccordionHeader tag="div" targetId="3">How do you keep it free?</AccordionHeader>
-                            <AccordionBody accordionId="3"><p>The model requires a lot of compute so we rely on ads and donations to pay for our servers.</p></AccordionBody>
-                        </AccordionItem>
-                        <AccordionItem>
-                            <AccordionHeader tag="div" targetId="4">Do you have any tips to create better images?</AccordionHeader>
-                            <AccordionBody accordionId="4"><p>It's always a good idea to be specific. Here are a few keywords that can be interesting to experiment with: "illustration", "photorealistic", "high definition"… We've seen so many cool tricks from the community so you should definitely check what others do for inspiration!</p>
+                            <AccordionHeader tag="div" targetId="3">How can I turn my images generated into NFT?</AccordionHeader>
+                            <AccordionBody accordionId="3">
+                                <p>Liked 1 of more of the variants generated? You can then easily Mint the image into an NFT with Bitcone.ai, directly from the Dapp! </p>
+                                <p>Simple choose the desired image (1 at a time) and click “Mint” to deploy the NFT on to the Polygon blockchain!</p>
+                                <p>(Users are must still pay the blockchain's gas minting Fee in (MATIC) in order to mint.)</p>
                             </AccordionBody>
                         </AccordionItem>
                         <AccordionItem>
-                            <AccordionHeader tag="div" targetId="5">How does the AI model work?</AccordionHeader>
+                            <AccordionHeader tag="div" targetId="4">Any tips to generate better images?</AccordionHeader>
+                            <AccordionBody accordionId="4">
+                                <p>Try to visualize your image idea in advance, and do your best to be specific.</p>
+                                <p>Here are a few examples of keywords that can be interesting to experiment with: “digital art”, "3D", "photorealistic", "high definition"…</p>
+                                <p>We've seen so many cool tricks from the conemunity, so you should definitely check what others do for inspiration and ask fellow Coners what they used!</p>
+                            </AccordionBody>
+                        </AccordionItem>
+                        <AccordionItem>
+                            <AccordionHeader tag="div" targetId="5">How does the Minting and A.I. modeling work?</AccordionHeader>
                             <AccordionBody accordionId="5">
-                                <p>The model used is called "DALLE mini", specifically the larger version also known as "DALLE mega" and is trained using <a className="underline" href="https://sites.research.google/trc" target="_blank" rel="noreferrer"> Google TRC</a>. You can find more details in the <a className="underline" href="https://wandb.ai/dalle-mini/dalle-mini/reports/DALL-E-mini-Generate-images-from-any-text-prompt--VmlldzoyMDE4NDAy" target="_blank" rel="noreferrer"> W&amp;B Project Report </a> and the <a className="underline" href="https://huggingface.co/dalle-mini/dalle-mini" target="_blank" rel="noreferrer"> DALL·E mini model card</a>. You can also watch <a className="underline" href="https://wandb.ai/dalle-mini/dalle-mini/reports/DALL-E-mini-Generate-Images-from-Any-Text-Prompt--VmlldzoyMDE4NDAy" target="_blank" rel="noreferrer"> The Story Behind DALL·E mini </a> on Gradient Dissent with Boris Dayma.</p>
+                                <p>The Dapp uses a web3 injection to connect your Wallet address to the blockchain for minting the NFT. </p>
+                                <p>The A.I. model used in generating images is a variation of OpenAI's generator: "DALL-E". The model is trained using <a className="underline" target="_blank" href="https://sites.research.google/trc">Google TRC</a>.</p>
                             </AccordionBody>
                         </AccordionItem>
                         <AccordionItem>
-                            <AccordionHeader tag="div" targetId="6">What about limitations and biases?</AccordionHeader>
+                            <AccordionHeader tag="div" targetId="6">Can you make larger images?</AccordionHeader>
                             <AccordionBody accordionId="6">
-                                <p> While the capabilities of image generation models are impressive, they may also reinforce or exacerbate societal biases. Because the model was trained on unfiltered data from the Internet, it may generate images that contain harmful stereotypes. The extent and nature of the biases of the DALL·E mini model have yet to be fully documented. Work to analyze the nature and extent of these limitations is ongoing and being documented in more detail in the <a className="underline" href="https://huggingface.co/dalle-mini/dalle-mini" target="_blank" rel="noreferrer"> DALL·E mini model card</a>.</p>
+                                <p> Not at the moment but we plan to make it possible in the future.</p>
                             </AccordionBody>
                         </AccordionItem>
                         <AccordionItem>
-                            <AccordionHeader tag="div" targetId="7">Can you make larger images?</AccordionHeader>
+                            <AccordionHeader tag="div" targetId="7">Can I use the images generated through Bitcone.ai to Mint NFT?</AccordionHeader>
                             <AccordionBody accordionId="7">
-                                <p>Not at the moment but we plan to make it possible in the future.</p>
+                                <p>Yes! Images can be Minted as NFT right from within the Dapp.</p>
+                                <p className="mb-0">As long as images created respect other's copyright, feel free to use the generator as you wish for personal use. Whether you want to mint NFT for your own collection, share them with your friends in r/ConeHeads, or even print on a T-shirt.</p>
+                                <p>(Please credit bitcone.ai for the images, so more coners can find us!)</p>
                             </AccordionBody>
                         </AccordionItem>
                         <AccordionItem>
-                            <AccordionHeader tag="div" targetId="8">Where does the logo come from?</AccordionHeader>
+                            <AccordionHeader tag="div" targetId="8">How can I support Bitcone.ai?</AccordionHeader>
                             <AccordionBody accordionId="8">
-                                <p>We use the 🖍️ crayon emoji, which is displayed natively (inspired by 🤗 Hugging Face). Images of the emoji use Twemoji - Twitter's open-source emoji collection (License: CC BY-SA 4.0). We just changed the color to orange.</p>
-                            </AccordionBody>
-                        </AccordionItem>
-                        <AccordionItem>
-                            <AccordionHeader tag="div" targetId="9">Can I use the images generated through craiyon?</AccordionHeader>
-                            <AccordionBody accordionId="9">
-                                <p>Yes, as long as you respect the <a className="underline" href="/terms" target="_blank" rel="noreferrer"> Terms of Use</a>, feel free to use them as you wish for personal use, whether you want to share them with your friends or print on a T-shirt.</p>
-                                <p>Please credit craiyon.com for the images.</p>
-                                <p>For commercial use, please refer to the "Commercial Licenses" section of the <a className="underline" href="/terms" target="_blank" rel="noreferrer"> Terms of Use</a>.</p>
-                            </AccordionBody>
-                        </AccordionItem>
-                        <AccordionItem>
-                            <AccordionHeader tag="div" targetId="10">Do you have an app?</AccordionHeader>
-                            <AccordionBody accordionId="10">
-                                <p>Yes, we have an app for Android devices on <a className="" href="https://play.google.com/store/apps/details?id=com.craiyon.twa" target="_blank" rel="noreferrer">Google Play Store</a>.</p>
-                                <p className="bold_font">WARNING: USE THE LINK ABOVE AS THERE ARE MANY COPYCATS.</p>
-                                <p>There is currently no app available for iPhone as it requires more development. For Androids, we were able to offer a simple PWA which replicates the website and only caches files for a faster experience.</p>
-                            </AccordionBody>
-                        </AccordionItem>
-                        <AccordionItem>
-                            <AccordionHeader tag="div" targetId="11">How can I support craiyon?</AccordionHeader>
-                            <AccordionBody accordionId="11">
-                                <p>We always welcome feedback, whether it is related to bugs or feature requests! If you enjoy craiyon, you can also <a className="underline" href="/donate" target="_blank" rel="noreferrer"> support us with a donation</a>!</p>
+                                <p>By simply using the bitcone.ai Dapp you are already supporting it!</p>
+                                <p>You can also choose to give a percentage of the Creator fees to the Official BitCone Deployer Address to conetribute to the BitCone LP: </p>
+                                <p>bitcones.eth </p>
+                                <p>or</p>
+                                <p>0x7e7c3543C4426B9E149a837eE843c4aD730738e4</p>
+                                <p>We always welcome feedback from our conemunity on how to better BitCone & BitCone.ai! </p>
+                                <p className="mb-0">If you're interested in supporting BitCone in additional ways, please conesider purchasing one of the <a className="underline" href="https://opensea.io/thebitcone" target="_blank">Official BitCone NFT</a> on OpenSea [https://opensea.io/thebitcone]. </p>
+                                <p className="mb-0">As well you can conetribute to BitCone directly by providing liquidity to one of the (CONE)  <a className="underline" href="https://www.reddit.com/r/ConeHeads/comments/yp4av6/guide_how_to_add_coneweth_liquidity_on/" target="_blank">Liquidity Pools on Quickswap!</a></p>
+                                <p><a className="underline" href="https://www.reddit.com/r/ConeHeads/comments/yp4av6/guide_how_to_add_coneweth_liquidity_on/" target="_blank">https://www.reddit.com/r/ConeHeads/comments/yp4av6/guide_how_to_add_coneweth_liquidity_on/</a></p>
                             </AccordionBody>
                         </AccordionItem>
                     </Accordion>
+
+                    <div className="text-center mt-5">
+                        <Button color="transparent" className="btn_primary">Purchase BitCones</Button>
+                    </div>
                 </div>
             </div>
         </section>

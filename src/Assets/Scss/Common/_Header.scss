@@ -2,19 +2,27 @@
     .navbar {
         padding: 24px 32px;
         border-bottom: 1px solid $ebony_clay;
-        .navbar-brand{
+        .navbar-brand {
             padding: 0;
             font-size: inherit;
         }
         .navbar-nav {
+            align-items: center;
             .nav-item {
-                &:not(:last-child){
+                &:not(:last-child) {
                     margin-right: 24px;
                 }
                 .nav-link {
-                    padding: 0px;
                     color: $athens_gray;
                     font-size: 16px;
+                    padding: 0;
+                    &.btn{
+                        padding: 14px 15px;
+                        color: $concrete;
+                        &.btn_primary_outline{
+                            color: $jaffa;
+                        }
+                    }
                 }
             }
         }

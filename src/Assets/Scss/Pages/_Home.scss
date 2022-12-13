@@ -1,33 +1,47 @@
 .generated_image_sec {
     padding: 96px 0px 160px;
-    .heading {
-        margin-bottom: 64px;
-        h1 {
-            font-size: 32px;
-            line-height: 48px;
-            color: $concrete;
-            font-family: $bold_font;
-            margin-bottom: 8px;
-            span {
-                &.text_orange {
-                    color: $orange_roughy;
-                }
-                &.normal_font {
-                    font-size: 18px;
-                    line-height: 27px;
-                }
-            }
-        }
-        p {
-            color: $manatee;
-            font-size: 18px;
-            line-height: 27px;
-            margin-bottom: 0;
-        }
-    }
     .inner_view {
         max-width: 736px;
         margin: 0 auto;
+        .heading {
+            margin-bottom: 64px;
+            h1 {
+                font-size: 16px;
+                line-height: 28px;
+                color: $jaffa;
+                font-family: $bold_font;
+                margin-bottom: 8px;
+                position: relative;
+                display: inline-block;
+                > img {
+                    max-width: 85px;
+                    position: absolute;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    &:first-child {
+                        left: -85px;
+                    }
+                    &:last-child {
+                        right: -85px;
+                    }
+                }
+                // span {
+                //     &.text_orange {
+                //         color: $orange_roughy;
+                //     }
+                //     &.normal_font {
+                //         font-size: 18px;
+                //         line-height: 27px;
+                //     }
+                // }
+            }
+            p {
+                color: $white;
+                font-size: 20px;
+                line-height: 27px;
+                margin-bottom: 0;
+            }
+        }
         .generated_input {
             margin-bottom: 17px;
 
@@ -47,7 +61,7 @@
             .loader {
                 position: absolute;
             }
-            .timer{
+            .timer {
                 top: 12px;
                 right: 16px;
                 font-size: 14px;
@@ -60,14 +74,17 @@
                 top: 80px;
                 text-align: center;
                 color: $concrete;
-                i {
-                    font-size: 26px;
+                > img {
+                    max-width: 100px;
                 }
-                p {
-                    margin-top: 15px;
-                    margin-bottom: 0;
-                    font-size: 16px;
-                }
+                // i {
+                //     font-size: 26px;
+                // }
+                // p {
+                //     margin-top: 15px;
+                //     margin-bottom: 0;
+                //     font-size: 16px;
+                // }
             }
             .img_icon_text {
                 flex-direction: column;
@@ -92,8 +109,7 @@
                     }
                 }
                 p {
-                    margin-bottom: 0px;
-                    margin-top: 4px;
+                    margin-bottom: 25px;
                     color: $manatee;
                 }
             }
@@ -160,6 +176,9 @@
                             }
                             a {
                                 color: $manatee;
+                                &.underline{
+                                    color: $jaffa;
+                                }
                             }
                         }
                     }
