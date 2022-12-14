@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { InputGroup, Input, Button, Accordion, AccordionBody, AccordionHeader, AccordionItem } from 'reactstrap';
-// import DrawIcon from "../../Assets/Images/download.png";
+import TextLogo from "../../Assets/Images/text_logo.png";
 import ImageIcon from "../../Assets/Images/image_icon.svg";
 import StarIconLarge from "../../Assets/Images/staricon01.svg";
 import StarIconSmall from "../../Assets/Images/staricon02.svg";
@@ -87,6 +87,7 @@ const Home = () => {
         <section className="generated_image_sec">
             <div className="inner_view">
                 <div className="heading text-center">
+                    <img className="img-fluid" src={TextLogo} alt="logo" />
                     <h1><img src={LeftGlowcone} alt="Glowcone" className="img-fluid" /><span>Use BitCone (CONE) to Generate A.I. Images online from text</span><img src={RightGlowcone} alt="Glowcone" className="img-fluid" /></h1>
                     <p>And Directly Mint Them as NFT!</p>
                 </div>
@@ -203,7 +204,7 @@ const Home = () => {
                             <AccordionHeader tag="div" targetId="5">How does the Minting and A.I. modeling work?</AccordionHeader>
                             <AccordionBody accordionId="5">
                                 <p>The Dapp uses a web3 injection to connect your Wallet address to the blockchain for minting the NFT. </p>
-                                <p>The A.I. model used in generating images is a variation of OpenAI's generator: "DALL-E". The model is trained using <a className="underline" target="_blank" href="https://sites.research.google/trc">Google TRC</a>.</p>
+                                <p>The A.I. model used in generating images is a variation of OpenAI's generator: "DALL-E". The model is trained using <a className="underline" target="_blank" href="https://sites.research.google/trc" rel="noreferrer">Google TRC</a>.</p>
                             </AccordionBody>
                         </AccordionItem>
                         <AccordionItem>
@@ -229,9 +230,9 @@ const Home = () => {
                                 <p>or</p>
                                 <p>0x7e7c3543C4426B9E149a837eE843c4aD730738e4</p>
                                 <p>We always welcome feedback from our conemunity on how to better BitCone & BitCone.ai! </p>
-                                <p className="mb-0">If you're interested in supporting BitCone in additional ways, please conesider purchasing one of the <a className="underline" href="https://opensea.io/thebitcone" target="_blank">Official BitCone NFT</a> on OpenSea [https://opensea.io/thebitcone]. </p>
-                                <p className="mb-0">As well you can conetribute to BitCone directly by providing liquidity to one of the (CONE)  <a className="underline" href="https://www.reddit.com/r/ConeHeads/comments/yp4av6/guide_how_to_add_coneweth_liquidity_on/" target="_blank">Liquidity Pools on Quickswap!</a></p>
-                                <p><a className="underline" href="https://www.reddit.com/r/ConeHeads/comments/yp4av6/guide_how_to_add_coneweth_liquidity_on/" target="_blank">https://www.reddit.com/r/ConeHeads/comments/yp4av6/guide_how_to_add_coneweth_liquidity_on/</a></p>
+                                <p className="mb-0">If you're interested in supporting BitCone in additional ways, please conesider purchasing one of the <a className="underline" href="https://opensea.io/thebitcone" target="_blank" rel="noreferrer">Official BitCone NFT</a> on OpenSea [https://opensea.io/thebitcone]. </p>
+                                <p className="mb-0">As well you can conetribute to BitCone directly by providing liquidity to one of the (CONE)  <a className="underline" href="https://www.reddit.com/r/ConeHeads/comments/yp4av6/guide_how_to_add_coneweth_liquidity_on/" target="_blank" rel="noreferrer">Liquidity Pools on Quickswap!</a></p>
+                                <p><a className="underline" href="https://www.reddit.com/r/ConeHeads/comments/yp4av6/guide_how_to_add_coneweth_liquidity_on/" target="_blank" rel="noreferrer">https://www.reddit.com/r/ConeHeads/comments/yp4av6/guide_how_to_add_coneweth_liquidity_on/</a></p>
                             </AccordionBody>
                         </AccordionItem>
                     </Accordion>

@@ -1,10 +1,19 @@
 .header {
     .navbar {
-        padding: 24px 32px;
+        padding: 18px 20px;
         border-bottom: 1px solid $ebony_clay;
         .navbar-brand {
             padding: 0;
             font-size: inherit;
+            > img {
+                &:first-child {
+                    max-width: 60px;
+                }
+                &:last-child {
+                    max-width: 200px;
+                    margin-left: 15px;
+                }
+            }
         }
         .navbar-nav {
             align-items: center;
@@ -16,10 +25,10 @@
                     color: $athens_gray;
                     font-size: 16px;
                     padding: 0;
-                    &.btn{
+                    &.btn {
                         padding: 14px 15px;
                         color: $concrete;
-                        &.btn_primary_outline{
+                        &.btn_primary_outline {
                             color: $jaffa;
                         }
                     }

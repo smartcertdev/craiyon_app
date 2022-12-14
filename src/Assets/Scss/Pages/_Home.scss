@@ -2,21 +2,22 @@
     padding: 96px 0px 160px;
     position: relative;
     z-index: 0;
-    &:before,&:after{
-        content: '';
+    &:before,
+    &:after {
+        content: "";
         position: absolute;
         width: 100%;
         height: 100%;
         top: 0;
         z-index: -1;
     }
-    &:before{
-        background: url('#{$imageurl}/left_conehead.png') no-repeat left -65px top 70px;
+    &:before {
+        background: url("#{$imageurl}/left_conehead.png") no-repeat left -65px top 70px;
         background-size: 330px;
         left: 0;
     }
-    &:after{
-        background: url('#{$imageurl}/right_conehead.png') no-repeat right -65px top 70px;
+    &:after {
+        background: url("#{$imageurl}/right_conehead.png") no-repeat right -65px top 70px;
         background-size: 330px;
         right: 0;
     }
@@ -25,24 +26,29 @@
         margin: 0 auto;
         .heading {
             margin-bottom: 64px;
+            > img {
+                max-width: 230px;
+                display: block;
+                margin: 0 auto 22px;
+            }
             h1 {
                 font-size: 16px;
                 line-height: 28px;
                 color: $jaffa;
                 font-family: $bold_font;
-                margin-bottom: 8px;
+                margin-bottom: 5px;
                 position: relative;
                 display: inline-block;
                 > img {
-                    max-width: 85px;
+                    max-width: 75px;
                     position: absolute;
                     top: 50%;
                     transform: translateY(-50%);
                     &:first-child {
-                        left: -85px;
+                        left: -80px;
                     }
                     &:last-child {
-                        right: -85px;
+                        right: -80px;
                     }
                 }
                 // span {
@@ -196,7 +202,7 @@
                             }
                             a {
                                 color: $manatee;
-                                &.underline{
+                                &.underline {
                                     color: $jaffa;
                                 }
                             }

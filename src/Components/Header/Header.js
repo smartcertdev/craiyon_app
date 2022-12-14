@@ -21,8 +21,8 @@ const Header = () => {
             <Container>
                 <Navbar color="transparent" expand="md">
                     <NavbarBrand href="/">
-                        {/* <img src={Logo} className="img-fluid" alt="Bitcone" />
-                        <img src={LogoText} className="img-fluid" alt="Bitcone" /> */}
+                        <img src={Logo} className="img-fluid" alt="Bitcone" />
+                        <img src={LogoText} className="img-fluid" alt="Bitcone" />
                     </NavbarBrand>
                     <NavbarToggler onClick={toggle} />
                     <Collapse isOpen={isOpen} navbar>
