@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { InputGroup, Input, Button, Accordion, AccordionBody, AccordionHeader, AccordionItem } from 'reactstrap';
-import TextLogo from "../../Assets/Images/text_logo.png";
+// import DrawIcon from "../../Assets/Images/download.png";
 import ImageIcon from "../../Assets/Images/image_icon.svg";
 import StarIconLarge from "../../Assets/Images/staricon01.svg";
 import StarIconSmall from "../../Assets/Images/staricon02.svg";
@@ -63,7 +63,7 @@ const Home = () => {
                 prompt: prompt,
                 n: 9,
                 size: "1024x1024",
-                // response_format:"b64_json"
+                response_format:"b64_json"
             });
             setRunning(false);
             setResult(res.data.data);
@@ -73,21 +73,26 @@ const Home = () => {
     };
 
     //Image Preview
-    const imagePreview = (item) => {
-        setPreviewImage(item.url);
+    const imagePreview = (image) => {
+        setPreviewImage(image);
         setShowPopup(true);
-        console.log(previewImage);
     }
 
     const downloadImage = (image) => {
-        saveAs('image_url', image);
+        // let file = convertBase64ToFile(image, "image.png");
+        // saveAs(file, fileName);
+
+        // saveAs( image);
+//         var a = document.createElement("a"); //Create <a>
+// a.href = image;//Image Base64 Goes here
+// a.download = "Imagepng."; //File name Here
+// a.click(); //
     }
 
     return (
         <section className="generated_image_sec">
             <div className="inner_view">
                 <div className="heading text-center">
-                    <img className="img-fluid" src={TextLogo} alt="logo" />
                     <h1><img src={LeftGlowcone} alt="Glowcone" className="img-fluid" /><span>Use BitCone (CONE) to Generate A.I. Images online from text</span><img src={RightGlowcone} alt="Glowcone" className="img-fluid" /></h1>
                     <p>And Directly Mint Them as NFT!</p>
                 </div>
@@ -103,9 +108,10 @@ const Home = () => {
                     {!showPopup &&
                         <div className="results">
                             {result.map((item, index) => {
+                                const imgUrl= 'data:image/webp;base64,'+item.b64_json;
                                 return (
-                                    <div className="result-image" key={index} onClick={() => imagePreview(item)}>
-                                        <img className="img-fluid" src={item.url} alt="result" />
+                                    <div className="result-image" key={index} onClick={() => imagePreview(imgUrl)}>
+                                        <img className="img-fluid" src={imgUrl} alt="result" />
                                     </div>
                                 )
                             })}
@@ -114,9 +120,13 @@ const Home = () => {
                     {showPopup &&
                         <div className="result_preview_image">
                             <div className="close_img">
-                                <Button type="button" color="transparent" onClick={() => downloadImage(previewImage)}>
-                                    <img src={DownloadIcon} alt="Download icon" className="img-fluid" />
+                                
+                                <Button type="button" color="transparent">
+                                    <a target="_blank" href={previewImage} download="image.png"> 
+                                        <img src={DownloadIcon} alt="Download icon" className="img-fluid" />
+                                    </a>
                                 </Button>
+                                
                                 <Button type="button" color="transparent" onClick={() => setShowPopup(false)}>
                                     <img src={CloseIcon} alt="Close icon" className="img-fluid" />
                                 </Button>
@@ -204,7 +214,7 @@ const Home = () => {
                             <AccordionHeader tag="div" targetId="5">How does the Minting and A.I. modeling work?</AccordionHeader>
                             <AccordionBody accordionId="5">
                                 <p>The Dapp uses a web3 injection to connect your Wallet address to the blockchain for minting the NFT. </p>
-                                <p>The A.I. model used in generating images is a variation of OpenAI's generator: "DALL-E". The model is trained using <a className="underline" target="_blank" href="https://sites.research.google/trc" rel="noreferrer">Google TRC</a>.</p>
+                                <p>The A.I. model used in generating images is a variation of OpenAI's generator: "DALL-E". The model is trained using <a className="underline" target="_blank" href="https://sites.research.google/trc">Google TRC</a>.</p>
                             </AccordionBody>
                         </AccordionItem>
                         <AccordionItem>
@@ -230,9 +240,9 @@ const Home = () => {
                                 <p>or</p>
                                 <p>0x7e7c3543C4426B9E149a837eE843c4aD730738e4</p>
                                 <p>We always welcome feedback from our conemunity on how to better BitCone & BitCone.ai! </p>
-                                <p className="mb-0">If you're interested in supporting BitCone in additional ways, please conesider purchasing one of the <a className="underline" href="https://opensea.io/thebitcone" target="_blank" rel="noreferrer">Official BitCone NFT</a> on OpenSea [https://opensea.io/thebitcone]. </p>
-                                <p className="mb-0">As well you can conetribute to BitCone directly by providing liquidity to one of the (CONE)  <a className="underline" href="https://www.reddit.com/r/ConeHeads/comments/yp4av6/guide_how_to_add_coneweth_liquidity_on/" target="_blank" rel="noreferrer">Liquidity Pools on Quickswap!</a></p>
-                                <p><a className="underline" href="https://www.reddit.com/r/ConeHeads/comments/yp4av6/guide_how_to_add_coneweth_liquidity_on/" target="_blank" rel="noreferrer">https://www.reddit.com/r/ConeHeads/comments/yp4av6/guide_how_to_add_coneweth_liquidity_on/</a></p>
+                                <p className="mb-0">If you're interested in supporting BitCone in additional ways, please conesider purchasing one of the <a className="underline" href="https://opensea.io/thebitcone" target="_blank">Official BitCone NFT</a> on OpenSea [https://opensea.io/thebitcone]. </p>
+                                <p className="mb-0">As well you can conetribute to BitCone directly by providing liquidity to one of the (CONE)  <a className="underline" href="https://www.reddit.com/r/ConeHeads/comments/yp4av6/guide_how_to_add_coneweth_liquidity_on/" target="_blank">Liquidity Pools on Quickswap!</a></p>
+                                <p><a className="underline" href="https://www.reddit.com/r/ConeHeads/comments/yp4av6/guide_how_to_add_coneweth_liquidity_on/" target="_blank">https://www.reddit.com/r/ConeHeads/comments/yp4av6/guide_how_to_add_coneweth_liquidity_on/</a></p>
                             </AccordionBody>
                         </AccordionItem>
                     </Accordion>
