@@ -22,16 +22,16 @@ const Footer = () => {
                     </div>
                     <div className="bottom_view">
                         <div className="social_links">
-                            <a href="#" target="_blank">
+                            <a href="https://www.facebook.com" target="_blank" rel="noreferrer">
                                 <img src={FacebookIcon} alt="Facebook icon" className="img-fluid" />
                             </a>
-                            <a href="#" target="_blank">
+                            <a href="http://www.instagram.com" target="_blank" rel="noreferrer">
                                 <img src={InstagramIcon} alt="Instagram icon" className="img-fluid" />
                             </a>
-                            <a href="#" target="_blank">
+                            <a href="http://www.twitter.com" target="_blank" rel="noreferrer">
                                 <img src={TwitterIcon} alt="Twitter icon" className="img-fluid" />
                             </a>
-                            <a href="#" target="_blank">
+                            <a href="http://www.mail.com" target="_blank" rel="noreferrer">
                                 <img src={MailIcon} alt="Mail icon" className="img-fluid" />
                             </a>
                         </div>
@@ -39,8 +39,8 @@ const Footer = () => {
                         <Button color="transparent" className="btn_secondary"><img src={HeartIcon} alt="Heart icon" />Support Us</Button>
 
                         <div className="links_view">
-                            <a href="#" target="_blank">Privacy</a>
-                            <a href="#" target="_blank">Terms</a>
+                            <a href="/" target="_blank" rel="noreferrer">Privacy</a>
+                            <a href="/" target="_blank" rel="noreferrer">Terms</a>
                             <p>© 2022 Craiyon LLC. All rights reserved.</p>
                         </div>
                     </div>

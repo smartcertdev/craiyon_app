@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { InputGroup, Input, Button, Accordion, AccordionBody, AccordionHeader, AccordionItem } from 'reactstrap';
-// import DrawIcon from "../../Assets/Images/download.png";
 import ImageIcon from "../../Assets/Images/image_icon.svg";
 import StarIconLarge from "../../Assets/Images/staricon01.svg";
 import StarIconSmall from "../../Assets/Images/staricon02.svg";
@@ -10,9 +9,9 @@ import CloseIcon from "../../Assets/Images/close_icon.svg";
 import LeftGlowcone from "../../Assets/Images/left_glowcone.png";
 import RightGlowcone from "../../Assets/Images/right_glowcone.png";
 import LoaderGif from "../../Assets/Images/loader.gif";
+import TextLogo from "../../Assets/Images/text_logo.png";
 import { Configuration, OpenAIApi } from "openai";
 // import classNames from 'classnames';
-import { saveAs } from 'file-saver'
 
 const Home = () => {
     //States
@@ -22,7 +21,7 @@ const Home = () => {
     const [prompt, setPrompt] = useState("");
     const [time, setTime] = useState(0);
     const [running, setRunning] = useState(false);
-    const [intervalVal, setIntervalVal] = useState("");
+    const [intVal, setIntVal] = useState("");
     const [previewImage, setPreviewImage] = useState("");
     const [showPopup, setShowPopup] = useState(false);
 
@@ -40,9 +39,9 @@ const Home = () => {
             let intv = setInterval(() => {
                 setTime(prevTime => (prevTime + 0.1));
             }, 200);
-            setIntervalVal(intv);
+            setIntVal(intv);
         } else if (!running) {
-            clearInterval(intervalVal);
+            clearInterval(intVal);
             setTime(0);
         }
     }, [running]);
@@ -63,16 +62,16 @@ const Home = () => {
                 prompt: prompt,
                 n: 9,
                 size: "1024x1024",
-                response_format:"b64_json"
+                response_format: "b64_json"
             });
-            
+
             setResult(res.data.data);
-            
-            setTimeout(()=>{
+
+            setTimeout(() => {
                 setRunning(false);
                 setLoading(false);
                 setTime(0);
-            }, 3000)
+            }, 2500)
         }
     };
 
@@ -82,28 +81,18 @@ const Home = () => {
         setShowPopup(true);
     }
 
-    const downloadImage = (image) => {
-        // let file = convertBase64ToFile(image, "image.png");
-        // saveAs(file, fileName);
-
-        // saveAs( image);
-//         var a = document.createElement("a"); //Create <a>
-// a.href = image;//Image Base64 Goes here
-// a.download = "Imagepng."; //File name Here
-// a.click(); //
-    }
 
     return (
         <section className="generated_image_sec">
             <div className="inner_view">
                 <div className="heading text-center">
+                    <img className="img-fluid" src={TextLogo} alt="logo" />
                     <h1><img src={LeftGlowcone} alt="Glowcone" className="img-fluid" /><span>Use BitCone (CONE) to Generate A.I. Images online from text</span><img src={RightGlowcone} alt="Glowcone" className="img-fluid" /></h1>
                     <p>And Directly Mint Them as NFT!</p>
                 </div>
                 <InputGroup className="generated_input">
                     <Input type="text" placeholder="Enter a prompt for the image you'd like to generate :)" value={prompt} onChange={(e) => setPrompt(e.target.value)} />
                     <Button color="transparent" className="btn_primary" onClick={generateImage} disabled={!prompt || loading}>
-                        {/* <img src={DrawIcon} alt="draw" className={classNames(loading ? "img-fluid animate-wiggle" : "img-fluid")} /> */}
                         {loading ? "Created..." : "Create Images"}
                     </Button>
                 </InputGroup>
@@ -112,7 +101,7 @@ const Home = () => {
                     {!showPopup &&
                         <div className="results">
                             {result.map((item, index) => {
-                                const imgUrl= 'data:image/webp;base64,'+item.b64_json;
+                                const imgUrl = 'data:image/webp;base64,' + item.b64_json;
                                 return (
                                     <div className="result-image" key={index} onClick={() => imagePreview(imgUrl)}>
                                         <img className="img-fluid" src={imgUrl} alt="result" />
@@ -124,13 +113,12 @@ const Home = () => {
                     {showPopup &&
                         <div className="result_preview_image">
                             <div className="close_img">
-                                
                                 <Button type="button" color="transparent">
-                                    <a target="_blank" href={previewImage} download="image.png"> 
+                                    <a target="_blank" href={previewImage} download={prompt + `.png`} rel="noreferrer">
                                         <img src={DownloadIcon} alt="Download icon" className="img-fluid" />
                                     </a>
                                 </Button>
-                                
+
                                 <Button type="button" color="transparent" onClick={() => setShowPopup(false)}>
                                     <img src={CloseIcon} alt="Close icon" className="img-fluid" />
                                 </Button>
@@ -145,8 +133,6 @@ const Home = () => {
                             <div className="image_loader_view">
                                 {loading && <>
                                     <div className="loader">
-                                        {/* <i className="fa fa-spinner fa-pulse"></i>
-                                        <p>This should not take long (up to 2 minutes)...</p> */}
                                         <img src={LoaderGif} alt="Loader" className="img-fluid" />
                                     </div>
                                     <div className="timer">
@@ -170,10 +156,6 @@ const Home = () => {
                         <img src={CameraIcon} alt="camera icon" className="img-fluid" /> Screenshot
                     </Button>
                 </div>
-                {/* <div className="result_view text-center">
-                    <p>Share your results on the <a className="underline" href="javascript:void(0);" target="_blank" rel="noreferrer">forum!</a></p>
-                    <p>Join our <a className="underline" href="javascript:void(0);">newsletter</a> and <br className="d-md-none d-block" /> be first to learn about premium access</p>
-                </div> */}
 
                 <div className="faqs_view">
                     <h2>Frequently asked questions</h2>
@@ -218,7 +200,7 @@ const Home = () => {
                             <AccordionHeader tag="div" targetId="5">How does the Minting and A.I. modeling work?</AccordionHeader>
                             <AccordionBody accordionId="5">
                                 <p>The Dapp uses a web3 injection to connect your Wallet address to the blockchain for minting the NFT. </p>
-                                <p>The A.I. model used in generating images is a variation of OpenAI's generator: "DALL-E". The model is trained using <a className="underline" target="_blank" href="https://sites.research.google/trc">Google TRC</a>.</p>
+                                <p>The A.I. model used in generating images is a variation of OpenAI's generator: "DALL-E". The model is trained using <a className="underline" target="_blank" href="https://sites.research.google/trc" rel="noreferrer">Google TRC</a>.</p>
                             </AccordionBody>
                         </AccordionItem>
                         <AccordionItem>
@@ -244,9 +226,9 @@ const Home = () => {
                                 <p>or</p>
                                 <p>0x7e7c3543C4426B9E149a837eE843c4aD730738e4</p>
                                 <p>We always welcome feedback from our conemunity on how to better BitCone & BitCone.ai! </p>
-                                <p className="mb-0">If you're interested in supporting BitCone in additional ways, please conesider purchasing one of the <a className="underline" href="https://opensea.io/thebitcone" target="_blank">Official BitCone NFT</a> on OpenSea [https://opensea.io/thebitcone]. </p>
-                                <p className="mb-0">As well you can conetribute to BitCone directly by providing liquidity to one of the (CONE)  <a className="underline" href="https://www.reddit.com/r/ConeHeads/comments/yp4av6/guide_how_to_add_coneweth_liquidity_on/" target="_blank">Liquidity Pools on Quickswap!</a></p>
-                                <p><a className="underline" href="https://www.reddit.com/r/ConeHeads/comments/yp4av6/guide_how_to_add_coneweth_liquidity_on/" target="_blank">https://www.reddit.com/r/ConeHeads/comments/yp4av6/guide_how_to_add_coneweth_liquidity_on/</a></p>
+                                <p className="mb-0">If you're interested in supporting BitCone in additional ways, please conesider purchasing one of the <a className="underline" href="https://opensea.io/thebitcone" target="_blank" rel="noreferrer">Official BitCone NFT</a> on OpenSea [https://opensea.io/thebitcone]. </p>
+                                <p className="mb-0">As well you can conetribute to BitCone directly by providing liquidity to one of the (CONE)  <a className="underline" href="https://www.reddit.com/r/ConeHeads/comments/yp4av6/guide_how_to_add_coneweth_liquidity_on/" target="_blank" rel="noreferrer">Liquidity Pools on Quickswap!</a></p>
+                                <p><a className="underline" href="https://www.reddit.com/r/ConeHeads/comments/yp4av6/guide_how_to_add_coneweth_liquidity_on/" target="_blank" rel="noreferrer">https://www.reddit.com/r/ConeHeads/comments/yp4av6/guide_how_to_add_coneweth_liquidity_on/</a></p>
                             </AccordionBody>
                         </AccordionItem>
                     </Accordion>
