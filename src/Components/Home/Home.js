@@ -65,10 +65,14 @@ const Home = () => {
                 size: "1024x1024",
                 response_format:"b64_json"
             });
-            setRunning(false);
+            
             setResult(res.data.data);
-            setLoading(false);
-            setTime(0);
+            
+            setTimeout(()=>{
+                setRunning(false);
+                setLoading(false);
+                setTime(0);
+            }, 3000)
         }
     };
 
