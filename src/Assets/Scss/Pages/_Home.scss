@@ -21,6 +21,14 @@
         background-size: 330px;
         right: 0;
     }
+    @include media-breakpoint-down(sm) {
+        padding: 60px 0px 60px;
+        &:before,
+        &:after {
+            display: none;
+        }
+    }
+
     .inner_view {
         max-width: 736px;
         margin: 0 auto;
@@ -156,7 +164,7 @@
             }
         }
         .faqs_view {
-            margin-top: 128px;
+            padding-top: 70px;
             h2 {
                 font-size: 32px;
                 color: $concrete;
@@ -205,6 +213,60 @@
                                 &.underline {
                                     color: $jaffa;
                                 }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        @include media-breakpoint-down(sm) {
+            .heading {
+                margin-bottom: 40px;
+                > img {
+                    max-width: 160px;
+                }
+                h1 {
+                    font-size: 14px;
+                    line-height: 23px;
+                    > img {
+                        display: none;
+                    }
+                }
+                p {
+                    font-size: 16px;
+                    line-height: 24px;
+                }
+            }
+            .generated_input {
+                display: block;
+                text-align: center;
+                .form-control{
+                    width: 100%;
+                }
+                .btn {
+                    margin-left: 0 !important;
+                    min-width: 130px;
+                    margin-top: 20px;
+                }
+            }
+            .faqs_view {
+                padding-top: 50px;
+                h2 {
+                    font-size: 28px;
+                    margin-bottom: 30px;
+                }
+                .accordion {
+                    .accordion-item {
+                        .accordion-header {
+                            .accordion-button {
+                                padding: 12px 15px;
+                                font-size: 14px;
+                            }
+                        }
+                        .accordion-body {
+                            p {
+                                font-size: 14px;
                             }
                         }
                     }

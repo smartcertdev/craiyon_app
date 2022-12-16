@@ -118,6 +118,12 @@ a {
         @include no-outline();
         @include box-shadow(none);
     }
+
+    @include media-breakpoint-down(sm){
+        font-size: 13px;
+        min-height: 45px;
+        padding: 10px 12px;
+    }
 }
 
 .normal_font {
@@ -183,6 +189,10 @@ a {
     &:hover {
         // outline: none !important;
         @include box-shadow(none !important);
+    }
+
+    @include media-breakpoint-down(sm){
+        font-size: 13px;
     }
 }
 

@@ -35,5 +35,33 @@
                 }
             }
         }
+
+        @include media-breakpoint-down(sm) {
+            padding: 15px 0;
+            .navbar-brand {
+                > img {
+                    &:first-child {
+                        max-width: 40px;
+                    }
+                    &:last-child {
+                        max-width: 140px;
+                        margin-left: 10px;
+                    }
+                }
+            }
+            .navbar-nav {
+                .nav-item {
+                    &:not(:last-child) {
+                        margin-right: 15px;
+                    }
+                    .nav-link {
+                        font-size: 14px;
+                        &.btn {
+                            padding: 14px 15px;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
