@@ -1,9 +1,10 @@
 .footer {
-    padding: 80px 0px 144px;
+    padding: 80px 0px;
     background-image: linear-gradient($ebonyclay, $theme_clr);
     .top_view {
         max-width: 482px;
         margin: 0 auto;
+        text-align: center;
         p {
             color: $manatee;
             margin-bottom: 0;
@@ -12,12 +13,9 @@
                 margin-bottom: 4px;
             }
         }
-        .generated_input {
-            margin-top: 24px;
-            .btn {
-                margin-left: 16px !important;
-                min-width: 145px;
-            }
+        a {
+            margin-top: 20px;
+            text-transform: uppercase;
         }
     }
     .bottom_view {
@@ -31,6 +29,9 @@
             justify-content: center;
             a {
                 display: inline-flex;
+                > img {
+                    max-width: 40px;
+                }
                 &:hover {
                     transform: translate(0, 0) rotate(-12deg) skew(0) skewY(0) scaleX(1.1) scaleY(1.1);
                     @include transition(0.2s linear);
@@ -46,16 +47,26 @@
             p {
                 color: $manatee;
             }
-            a {
-                font-size: 16px;
-                &:first-child {
-                    margin-right: 16px;
-                }
-            }
+            // a {
+            //     font-size: 16px;
+            //     &:first-child {
+            //         margin-right: 16px;
+            //     }
+            // }
             p {
-                margin-top: 16px;
                 margin-bottom: 0;
                 font-size: 14px;
+            }
+        }
+    }
+
+    @include media-breakpoint-down(sm) {
+        padding: 40px 0px;
+        .bottom_view {
+            padding-top: 30px;
+            margin-top: 30px;
+            .links_view {
+                margin-top: 40px;
             }
         }
     }

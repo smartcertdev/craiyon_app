@@ -35,6 +35,17 @@
                 }
             }
         }
+        .navbar-toggler{
+            border-color: $white;
+            padding: 0;
+            border: none;
+            .navbar-toggler-icon{
+                background: url("#{$imageurl}/menu_bar.png") no-repeat center center;
+                background-size: 100%;
+                width: 30px;
+                height: 28px;
+            }
+        }
 
         @include media-breakpoint-down(sm) {
             padding: 15px 0;
@@ -50,6 +61,8 @@
                 }
             }
             .navbar-nav {
+                flex-direction: row;
+                padding-top: 15px;
                 .nav-item {
                     &:not(:last-child) {
                         margin-right: 15px;

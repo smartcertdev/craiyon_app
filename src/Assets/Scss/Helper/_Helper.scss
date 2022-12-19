@@ -35,6 +35,8 @@ a {
     font-weight: normal;
     min-height: 50px;
     font-family: $medium_font;
+    display: inline-flex;
+    align-items: center;
 
     > img {
         max-width: 24px;
@@ -119,7 +121,7 @@ a {
         @include box-shadow(none);
     }
 
-    @include media-breakpoint-down(sm){
+    @include media-breakpoint-down(sm) {
         font-size: 13px;
         min-height: 45px;
         padding: 10px 12px;
@@ -191,7 +193,7 @@ a {
         @include box-shadow(none !important);
     }
 
-    @include media-breakpoint-down(sm){
+    @include media-breakpoint-down(sm) {
         font-size: 13px;
     }
 }
@@ -201,8 +203,8 @@ a {
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
     grid-gap: 8px;
     .result-image {
-        width: 240px;
-        height: 240px;
+        // width: 240px;
+        // height: 240px;
         border-radius: 8px;
         @include transition(0.2s linear);
         &:hover {
@@ -210,8 +212,8 @@ a {
             border: 2px solid $manatee;
         }
         > img {
-            width: 240px;
-            height: 240px;
+            // width: 240px;
+            // height: 240px;
             border-radius: 8px;
         }
     }
@@ -247,6 +249,11 @@ a {
         border-radius: 8px;
         height: 736px;
         width: 100%;
+    }
+    @include media-breakpoint-down(sm) {
+        > img {
+            height: auto;
+        }
     }
 }
 

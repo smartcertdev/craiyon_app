@@ -1,11 +1,12 @@
 import React from 'react'
-import { Container, InputGroup, Input, Button } from 'reactstrap';
+import { Container, Button } from 'reactstrap';
 
-import FacebookIcon from "../../Assets/Images/facebook_icon.svg";
-import InstagramIcon from "../../Assets/Images/insta_icon.svg";
-import TwitterIcon from "../../Assets/Images/twitter_icon.svg";
-import MailIcon from "../../Assets/Images/mail_icon.svg";
-import HeartIcon from "../../Assets/Images/heart_icon.svg";
+import MediumIcon from "../../Assets/Images/medium_icon.png";
+import DiscordIcon from "../../Assets/Images/discord_icon.png";
+import TwitterIcon from "../../Assets/Images/twitter_icon.png";
+import OpenseaIcon from "../../Assets/Images/opensea_icon.png";
+
+import RedditIcon from "../../Assets/Images/reddit_icon.png";
 
 const Footer = () => {
     return (
@@ -13,35 +14,30 @@ const Footer = () => {
             <footer className="footer">
                 <Container>
                     <div className="top_view">
-                        <p className="medium_font">Subscribe to our newsletter</p>
+                        <p className="medium_font">Join the r/ConeHeads Conemunity!</p>
                         <p>The latest news, AI models, and fun memes from the community!</p>
-                        <InputGroup className="generated_input">
-                            <Input type="text" placeholder="Enter your email..." />
-                            <Button color="transparent" className="btn_primary">Subscribe</Button>
-                        </InputGroup>
+                        <a href="https://www.reddit.com/r/ConeHeads/" className="btn btn_primary"><img src={RedditIcon} alt="Reddit Icon" className="img-fluid" /> Cone</a>
                     </div>
                     <div className="bottom_view">
                         <div className="social_links">
-                            <a href="https://www.facebook.com" target="_blank" rel="noreferrer">
-                                <img src={FacebookIcon} alt="Facebook icon" className="img-fluid" />
-                            </a>
-                            <a href="http://www.instagram.com" target="_blank" rel="noreferrer">
-                                <img src={InstagramIcon} alt="Instagram icon" className="img-fluid" />
-                            </a>
-                            <a href="http://www.twitter.com" target="_blank" rel="noreferrer">
+                            <a href="https://twitter.com/BitCone_CONE" target="_blank" rel="noreferrer">
                                 <img src={TwitterIcon} alt="Twitter icon" className="img-fluid" />
                             </a>
-                            <a href="http://www.mail.com" target="_blank" rel="noreferrer">
-                                <img src={MailIcon} alt="Mail icon" className="img-fluid" />
+                            <a href="https://bitcone.medium.com/" target="_blank" rel="noreferrer">
+                                <img src={MediumIcon} alt="Medium icon" className="img-fluid" />
+                            </a>
+                            <a href="https://discord.com/invite/fHeXGeFMH2" target="_blank" rel="noreferrer">
+                                <img src={DiscordIcon} alt="Discord icon" className="img-fluid" />
+                            </a>
+                            <a href="https://opensea.io/theBitCone?tab=created" target="_blank" rel="noreferrer">
+                                <img src={OpenseaIcon} alt="Opensea icon" className="img-fluid" />
                             </a>
                         </div>
 
-                        <Button color="transparent" className="btn_secondary"><img src={HeartIcon} alt="Heart icon" />Support Us</Button>
+                        <a href="https://bitcone.lol" className="btn btn_secondary" rel="noreferrer">Bitcone.lol</a>
 
                         <div className="links_view">
-                            <a href="/" target="_blank" rel="noreferrer">Privacy</a>
-                            <a href="/" target="_blank" rel="noreferrer">Terms</a>
-                            <p>© 2022 Craiyon LLC. All rights reserved.</p>
+                            <p>© 2023 bitcone.ai. All rights reserved.</p>
                         </div>
                     </div>
                 </Container>

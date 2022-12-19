@@ -73,6 +73,7 @@ const Home = () => {
         if (prompt.length > 0) {
             setLoading(true);
             setRunning(true);
+
             const res = await openai.createImage({
                 prompt: prompt,
                 n: 9,
@@ -86,7 +87,7 @@ const Home = () => {
                 setRunning(false);
                 setLoading(false);
                 setTime(0);
-            }, 2500)
+            }, 1800);
         }
     };
 
@@ -127,14 +128,18 @@ const Home = () => {
                 <Container>
                     <div className="inner_view">
                         <div className="heading text-center">
-                            <img className="img-fluid" src={TextLogo} alt="logo" />
-                            <h1><img src={LeftGlowcone} alt="Glowcone" className="img-fluid" /><span>Use BitCone (CONE) to Generate A.I. Images online from text</span><img src={RightGlowcone} alt="Glowcone" className="img-fluid" /></h1>
+                            <div className="heading_logo">
+                                <img src={LeftGlowcone} alt="Glowcone" className="img-fluid mobile_left" />
+                                <img className="img-fluid" src={TextLogo} alt="logo" />
+                                <img src={RightGlowcone} alt="Glowcone" className="img-fluid mobile_right" />
+                            </div>
+                            <h1><img src={LeftGlowcone} alt="Glowcone" className="img-fluid" /><span>Use BitCone (CONE) to Generate<br className='d-md-none d-block' /> A.I. Images online from text</span><img src={RightGlowcone} alt="Glowcone" className="img-fluid" /></h1>
                             <p>And Directly Mint Them as NFT!</p>
                         </div>
                         <InputGroup className="generated_input">
                             <Input type="text" placeholder="Enter a prompt for the image you'd like to generate :)" value={prompt} onChange={(e) => setPrompt(e.target.value)} />
                             <Button color="transparent" className="btn_primary" onClick={generateImage} disabled={!prompt || loading}>
-                                {loading ? "Created..." : "Create Images"}
+                                {loading ? "Creating..." : "Create Images"}
                             </Button>
                         </InputGroup>
 
@@ -176,9 +181,7 @@ const Home = () => {
                                             <div className="loader">
                                                 <img src={LoaderGif} alt="Loader" className="img-fluid" />
                                             </div>
-                                            <div className="timer">
-                                                <div>{time.toFixed(1)}</div>
-                                            </div>
+                                            <div className="timer">{time.toFixed(1)}</div>
                                         </>}
                                         {!loading && <div className="img_icon_text mix-blend-screen d-flex align-items-center justify-content-center">
                                             <p>Set your creativity free!</p>
@@ -226,7 +229,7 @@ const Home = () => {
                                     <AccordionBody accordionId="3">
                                         <p>Liked 1 of more of the variants generated? You can then easily Mint the image into an NFT with Bitcone.ai, directly from the Dapp! </p>
                                         <p>Simple choose the desired image (1 at a time) and click “Mint” to deploy the NFT on to the Polygon blockchain!</p>
-                                        <p>(Users are must still pay the blockchain's gas minting Fee in (MATIC) in order to mint.)</p>
+                                        <p>(Users must still pay the blockchain's gas minting Fee in (MATIC) in order to mint.)</p>
                                     </AccordionBody>
                                 </AccordionItem>
                                 <AccordionItem>
@@ -268,14 +271,14 @@ const Home = () => {
                                         <p>0x7e7c3543C4426B9E149a837eE843c4aD730738e4</p>
                                         <p>We always welcome feedback from our conemunity on how to better BitCone & BitCone.ai! </p>
                                         <p className="mb-0">If you're interested in supporting BitCone in additional ways, please conesider purchasing one of the <a className="underline" href="https://opensea.io/thebitcone" target="_blank" rel="noreferrer">Official BitCone NFT</a> on OpenSea [https://opensea.io/thebitcone]. </p>
-                                        <p className="mb-0">As well you can conetribute to BitCone directly by providing liquidity to one of the (CONE)  <a className="underline" href="https://www.reddit.com/r/ConeHeads/comments/yp4av6/guide_how_to_add_coneweth_liquidity_on/" target="_blank" rel="noreferrer">Liquidity Pools on Quickswap!</a></p>
+                                        <p className="mb-0">As well you can conetribute to BitCone directly by providing liquidity to one of the (CONE)  <a className="underline" href="https://quickswap.exchange/#/pools/v2?currency0=0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619&currency1=0xbA777aE3a3C91fCD83EF85bfe65410592Bdd0f7c" target="_blank" rel="noreferrer">Liquidity Pools on Quickswap!</a></p>
                                         <p><a className="underline" href="https://www.reddit.com/r/ConeHeads/comments/yp4av6/guide_how_to_add_coneweth_liquidity_on/" target="_blank" rel="noreferrer">https://www.reddit.com/r/ConeHeads/comments/yp4av6/guide_how_to_add_coneweth_liquidity_on/</a></p>
                                     </AccordionBody>
                                 </AccordionItem>
                             </Accordion>
 
                             <div className="text-center mt-5">
-                                <Button color="transparent" className="btn_primary">Purchase BitCones</Button>
+                                <a href="https://quickswap.exchange/#/swap/v2?currency0=0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619&currency1=0xbA777aE3a3C91fCD83EF85bfe65410592Bdd0f7c" className="btn btn_primary" rel="noreferrer" target="_blank">Purchase BitCones</a>
                             </div>
                         </div>
                     </div>

@@ -1,5 +1,5 @@
 .generated_image_sec {
-    padding: 96px 0px 160px;
+    padding: 100px 0px 100px;
     position: relative;
     z-index: 0;
     &:before,
@@ -22,7 +22,7 @@
         right: 0;
     }
     @include media-breakpoint-down(sm) {
-        padding: 60px 0px 60px;
+        padding: 35px 0px 60px;
         &:before,
         &:after {
             display: none;
@@ -34,10 +34,16 @@
         margin: 0 auto;
         .heading {
             margin-bottom: 64px;
-            > img {
-                max-width: 230px;
-                display: block;
-                margin: 0 auto 22px;
+            .heading_logo {
+                > img {
+                    max-width: 230px;
+                    display: inline-block;
+                    margin: 0 auto 22px;
+                    &.mobile_left,
+                    &.mobile_right {
+                        display: none;
+                    }
+                }
             }
             h1 {
                 font-size: 16px;
@@ -97,9 +103,11 @@
             }
             .timer {
                 top: 12px;
-                right: 16px;
+                right: 10px;
                 font-size: 14px;
                 color: $manatee;
+                width: 50px;
+                text-align: right;
             }
             .loader {
                 left: 0;
@@ -222,9 +230,17 @@
 
         @include media-breakpoint-down(sm) {
             .heading {
-                margin-bottom: 40px;
-                > img {
-                    max-width: 160px;
+                margin-bottom: 30px;
+                .heading_logo {
+                    > img {
+                        max-width: 160px;
+                        margin: 0 10px 10px;
+                        &.mobile_left,
+                        &.mobile_right {
+                            display: inline-block;
+                            max-width: 40px;
+                        }
+                    }
                 }
                 h1 {
                     font-size: 14px;
@@ -239,16 +255,13 @@
                 }
             }
             .generated_input {
-                display: block;
-                text-align: center;
-                .form-control{
-                    width: 100%;
-                }
                 .btn {
-                    margin-left: 0 !important;
-                    min-width: 130px;
-                    margin-top: 20px;
+                    margin-left: 10px !important;
+                    min-width: auto;
                 }
+            }
+            .image_loader_view {
+                min-height: 360px;
             }
             .faqs_view {
                 padding-top: 50px;
