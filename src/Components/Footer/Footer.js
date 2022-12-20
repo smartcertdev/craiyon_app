@@ -1,5 +1,5 @@
 import React from 'react'
-import { Container, Button } from 'reactstrap';
+import { Container } from 'reactstrap';
 
 import MediumIcon from "../../Assets/Images/medium_icon.png";
 import DiscordIcon from "../../Assets/Images/discord_icon.png";

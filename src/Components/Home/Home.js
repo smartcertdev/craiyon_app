@@ -1,12 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import {
-    InputGroup, Input, Button, Accordion, AccordionBody, AccordionHeader, AccordionItem, Collapse, Container,
-    Navbar,
-    NavbarToggler,
-    NavbarBrand,
-    Nav,
-    NavItem,
-    NavLink,
+    InputGroup, Input, Button, Accordion, AccordionBody, AccordionHeader, AccordionItem, Collapse, Container, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink
 } from 'reactstrap';
 import ImageIcon from "../../Assets/Images/image_icon.svg";
 import StarIconLarge from "../../Assets/Images/staricon01.svg";
@@ -107,6 +101,7 @@ const Home = () => {
                             <img src={LogoText} className="img-fluid" alt="Bitcone" />
                         </NavbarBrand>
                         <NavbarToggler onClick={Navbartoggle} />
+                        <a href="/" className="btn btn_primary d-md-none d-block">Connect Wallet</a>
                         <Collapse isOpen={isOpen} navbar>
                             <Nav className="ms-auto" navbar>
                                 <NavItem>
@@ -115,7 +110,7 @@ const Home = () => {
                                 <NavItem>
                                     <NavLink href="https://quickswap.exchange/#/swap/v2?currency0=0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619&currency1=0xbA777aE3a3C91fCD83EF85bfe65410592Bdd0f7c" target="_blank" className="btn btn_primary_outline">Buy BitCone</NavLink>
                                 </NavItem>
-                                <NavItem>
+                                <NavItem className='d-md-block d-none'>
                                     <NavLink href="/" className="btn btn_primary">Connect Wallet</NavLink>
                                 </NavItem>
                             </Nav>
@@ -193,13 +188,9 @@ const Home = () => {
                                         </div>}
                                     </div>
                                 </>
-                            )}
+                            )
+                        }
 
-                        {/* <div className="screen_s_btn text-center">
-                    <Button color="transparent" className="btn_secondary">
-                        <img src={CameraIcon} alt="camera icon" className="img-fluid" /> Screenshot
-                    </Button>
-                </div> */}
 
                         <div className="faqs_view" ref={scollToRef}>
                             <h2>Frequently asked questions</h2>

@@ -48,7 +48,7 @@
             h1 {
                 font-size: 16px;
                 line-height: 28px;
-                color: $jaffa;
+                color: $orange_roughy;
                 font-family: $bold_font;
                 margin-bottom: 5px;
                 position: relative;
@@ -262,6 +262,11 @@
             }
             .image_loader_view {
                 min-height: 360px;
+                .img_icon_text {
+                    p{
+                        font-size: 14px;
+                    }
+                }
             }
             .faqs_view {
                 padding-top: 50px;
