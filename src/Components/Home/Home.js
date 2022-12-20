@@ -15,6 +15,9 @@ import TextLogo from "../../Assets/Images/text_logo.png";
 import Logo from '../../Assets/Images/logo.png';
 import LogoText from '../../Assets/Images/text_logo.png';
 import { Configuration, OpenAIApi } from "openai";
+import Base64Downloader from 'react-base64-downloader';
+
+
 // import classNames from 'classnames';
 
 const Home = () => {
@@ -142,7 +145,7 @@ const Home = () => {
                             {!showPopup &&
                                 <div className="results">
                                     {result.map((item, index) => {
-                                        const imgUrl = 'data:image/webp;base64,' + item.b64_json;
+                                        const imgUrl = 'data:image/png;base64,' + item.b64_json;
                                         return (
                                             <div className="result-image" key={index} onClick={() => imagePreview(imgUrl)}>
                                                 <img className="img-fluid" src={imgUrl} alt="result" />
@@ -154,12 +157,9 @@ const Home = () => {
                             {showPopup &&
                                 <div className="result_preview_image">
                                     <div className="close_img">
-                                        <Button type="button" color="transparent">
-                                            <a target="_blank" href={previewImage} download={prompt + `.png`} rel="noreferrer">
-                                                <img src={DownloadIcon} alt="Download icon" className="img-fluid" />
-                                            </a>
-                                        </Button>
-
+                                        <Base64Downloader className="btn btn-transparent" base64={previewImage} downloadName={prompt}>
+                                            <img src={DownloadIcon} alt="Download icon" className="img-fluid" />
+                                        </Base64Downloader>
                                         <Button type="button" color="transparent" onClick={() => setShowPopup(false)}>
                                             <img src={CloseIcon} alt="Close icon" className="img-fluid" />
                                         </Button>
