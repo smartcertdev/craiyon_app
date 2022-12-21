@@ -98,13 +98,13 @@ const Home = () => {
         <>
             <header className="header">
                 <Container>
-                    <Navbar color="transparent" expand="lg" container="">
+                    <Navbar color="transparent" expand="md" container="">
                         <NavbarBrand href="/">
                             <img src={Logo} className="img-fluid" alt="Bitcone" />
                             <img src={LogoText} className="img-fluid" alt="Bitcone" />
                         </NavbarBrand>
                         <NavbarToggler onClick={Navbartoggle} />
-                        <a href="/" className="btn btn_primary d-md-none d-block">Connect Wallet</a>
+                        <a href="/" className="btn btn_primary d-md-none d-inline-flex">Connect Wallet</a>
                         <Collapse isOpen={isOpen} navbar>
                             <Nav className="ms-auto" navbar>
                                 <NavItem>
