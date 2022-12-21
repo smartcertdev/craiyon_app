@@ -126,11 +126,11 @@ a {
         min-height: 40px;
         padding: 10px 12px;
     }
-    @include media-breakpoint-down(xs) {
-        font-size: 12px;
-        min-height: 36px;
-        padding: 8px 8px;
-    }
+    // @include media-breakpoint-down(xs) {
+    //     font-size: 12px;
+    //     min-height: 36px;
+    //     padding: 8px 8px;
+    // }
 }
 
 .normal_font {

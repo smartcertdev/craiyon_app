@@ -21,9 +21,9 @@ import Base64Downloader from 'react-base64-downloader';
 // import classNames from 'classnames';
 
 const Home = () => {
-    const [isOpen, setIsOpen] = useState(false);
+    const [isOpen, setIsOpen] = useState(true);
 
-    const Navbartoggle = () => setIsOpen(!isOpen);
+    // const Navbartoggle = () => setIsOpen(!isOpen);
     const scollToRef = useRef();
 
     //States
@@ -103,17 +103,18 @@ const Home = () => {
                             <img src={Logo} className="img-fluid" alt="Bitcone" />
                             <img src={LogoText} className="img-fluid" alt="Bitcone" />
                         </NavbarBrand>
-                        <NavbarToggler onClick={Navbartoggle} />
+                        {/* <NavbarToggler onClick={Navbartoggle} /> */}
                         <a href="/" className="btn btn_primary d-md-none d-inline-flex">Connect Wallet</a>
                         <Collapse isOpen={isOpen} navbar>
                             <Nav className="ms-auto" navbar>
                                 <NavItem>
-                                    <NavLink href="#" onClick={() => scollToRef.current.scrollIntoView()}>FAQ</NavLink>
+                                    <NavLink href="#" onClick={() => scollToRef.current.scrollIntoView()} className='d-md-inline-flex d-none'>FAQ</NavLink>
+                                    <NavLink href="#" onClick={() => scollToRef.current.scrollIntoView()} className='btn btn_primary_outline d-md-none d-inline-flex'>FAQ</NavLink>
                                 </NavItem>
                                 <NavItem>
                                     <NavLink href="https://quickswap.exchange/#/swap/v2?currency0=0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619&currency1=0xbA777aE3a3C91fCD83EF85bfe65410592Bdd0f7c" target="_blank" className="btn btn_primary_outline">Buy BitCone</NavLink>
                                 </NavItem>
-                                <NavItem className='d-md-block d-none'>
+                                <NavItem className='d-md-inline-flex d-none'>
                                     <NavLink href="/" className="btn btn_primary">Connect Wallet</NavLink>
                                 </NavItem>
                             </Nav>
@@ -263,7 +264,6 @@ const Home = () => {
                                         <p>We always welcome feedback from our conemunity on how to better BitCone & BitCone.ai! </p>
                                         <p className="mb-0">If you're interested in supporting BitCone in additional ways, please conesider purchasing one of the <a className="underline" href="https://opensea.io/thebitcone" target="_blank" rel="noreferrer">Official BitCone NFT</a> on OpenSea [https://opensea.io/thebitcone]. </p>
                                         <p className="mb-0">As well you can conetribute to BitCone directly by providing liquidity to one of the (CONE)  <a className="underline" href="https://quickswap.exchange/#/pools/v2?currency0=0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619&currency1=0xbA777aE3a3C91fCD83EF85bfe65410592Bdd0f7c" target="_blank" rel="noreferrer">Liquidity Pools on Quickswap!</a></p>
-                                        <p><a className="underline" href="https://www.reddit.com/r/ConeHeads/comments/yp4av6/guide_how_to_add_coneweth_liquidity_on/" target="_blank" rel="noreferrer">https://www.reddit.com/r/ConeHeads/comments/yp4av6/guide_how_to_add_coneweth_liquidity_on/</a></p>
                                     </AccordionBody>
                                 </AccordionItem>
                             </Accordion>
