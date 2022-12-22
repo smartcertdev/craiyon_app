@@ -73,7 +73,7 @@ const Home = () => {
 
             const res = await openai.createImage({
                 prompt: prompt,
-                n: 9,
+                n: 3,
                 size: "1024x1024",
                 response_format: "b64_json"
             });
